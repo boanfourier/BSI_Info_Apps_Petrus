@@ -69,7 +69,7 @@
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="Default.aspx">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span></a>
                 </li>
@@ -92,7 +92,10 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Event Components:</h6>
-                            <a class="collapse-item" href="AddEvent.aspx">New Event</a>
+                            <a class="collapse-item" href="Events.aspx">Events List</a>
+                            <a class="collapse-item" href="Locations.aspx">Locations</a>
+                            <a class="collapse-item" href="Tasks.aspx">Tasks</a>
+                            <a class="collapse-item" href="Organizers.aspx">Organizers</a>
                             <a class="collapse-item" href="Notes.aspx">Note</a>
                             <a class="collapse-item" href="Voting.aspx">Voting</a>
                         </div>

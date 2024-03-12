@@ -11,5 +11,23 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class About
+Partial Public Class Notes
+
+    '''<summary>
+    '''HyperLinkAddNotes control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents HyperLinkAddNotes As Global.System.Web.UI.WebControls.HyperLink
+
+    '''<summary>
+    '''GridViewNotes control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GridViewNotes As Global.System.Web.UI.WebControls.GridView
 End Class

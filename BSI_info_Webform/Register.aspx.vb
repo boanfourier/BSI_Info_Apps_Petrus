@@ -8,12 +8,14 @@ Public Class Register
 
     Protected Sub btnRegister_Click(ByVal sender As Object, ByVal e As EventArgs)
         If (Page.IsValid) Then
-            Dim registerName As String = txtRegisterName.Text
+            Dim registerFirstname As String = txtRegisterFirstName.Text
+            Dim registerLastName As String = txtRegisterLastName.Text
+            Dim registerUsername As String = txtRegisterUsername.Text
             Dim registerPassword As String = txtRegisterPassword.Text
             Dim registerEmail As String = txtRegisterEmail.Text
             Dim registerPhone As String = txtRegisterPhone.Text
 
-            If (Not IsUserExist(registerName, registerEmail) AndAlso RegisterUser(registerName, registerPassword, registerEmail, registerPhone)) Then
+            If (Not IsUserExist(registerUsername, registerEmail) AndAlso RegisterUser(registerFirstname, registerLastName, registerUsername, registerPassword, registerEmail, registerPhone)) Then
                 lblRegistrationStatus.Text = "Registration successful. You can now login."
                 lblRegistrationStatus.Visible = True
                 Response.Redirect("Login.aspx") ' Redirect to the login page after successful registration
@@ -24,14 +26,14 @@ Public Class Register
         End If
     End Sub
 
-    Protected Function IsUserExist(registerName As String, registerEmail As String) As Boolean
+    Protected Function IsUserExist(registerUsername As String, registerEmail As String) As Boolean
         Dim connectionString = "Data Source=BSINB23L014\SQLEXPRESS02;Initial Catalog=BSI_info;Integrated Security=True"
 
         Using connection As New SqlConnection(connectionString)
-            Dim query As String = "SELECT COUNT(*) FROM Participants WHERE name = @name OR email = @email"
+            Dim query As String = "SELECT COUNT(*) FROM Participants WHERE username = @username OR email = @email"
 
             Using cmd As New SqlCommand(query, connection)
-                cmd.Parameters.AddWithValue("@name", registerName)
+                cmd.Parameters.AddWithValue("@username", registerUsername)
                 cmd.Parameters.AddWithValue("@email", registerEmail)
 
                 connection.Open()
@@ -45,14 +47,16 @@ Public Class Register
         End Using
     End Function
 
-    Protected Function RegisterUser(registerName As String, registerPassword As String, registerEmail As String, registerPhone As String) As Boolean
+    Protected Function RegisterUser(registerFirstName As String, registerLastName As String, registerUsername As String, registerPassword As String, registerEmail As String, registerPhone As String) As Boolean
         Dim connectionString = "Data Source=BSINB23L014\SQLEXPRESS02;Initial Catalog=BSI_info;Integrated Security=True"
 
         Using connection As New SqlConnection(connectionString)
-            Dim query As String = "INSERT INTO Participants (name, password, email, phone) VALUES (@name, @password, @email, @phone)"
+            Dim query As String = "INSERT INTO Participants (FirstName,LastName, username, password, email, phone) VALUES (@FirstName, @LastName, @username, @password, @email, @phone)"
 
             Using cmd As New SqlCommand(query, connection)
-                cmd.Parameters.AddWithValue("@name", registerName)
+                cmd.Parameters.AddWithValue("@FirstName", registerFirstName)
+                cmd.Parameters.AddWithValue("@LastName", registerLastName)
+                cmd.Parameters.AddWithValue("@username", registerUsername)
                 cmd.Parameters.AddWithValue("@password", registerPassword)
                 cmd.Parameters.AddWithValue("@email", registerEmail)
                 cmd.Parameters.AddWithValue("@phone", registerPhone)

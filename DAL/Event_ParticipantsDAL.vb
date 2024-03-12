@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports BSI_Info_Apps
-Imports [Interface]
+
 Public Class Event_ParticipantsDAL
     Implements IEvent_Participants
     Private Const strConn As String = "Server=.\SQLEXPRESS02;Database=BSI_info;Trusted_Connection=True;"
