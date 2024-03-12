@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Threading
 Imports BSI_Info_Apps
-Imports [Interface]
+
 Public Class TasksDal
     Implements ITasks
     Private Const strConn As String = "Server=.\SQLEXPRESS02;Database=BSI_info;Trusted_Connection=True;"
@@ -13,7 +13,7 @@ Public Class TasksDal
         conn = New SqlConnection(strConn)
     End Sub
 
-    Public Function GetTasks() As List(Of Tasks) Implements ITasks.GetTasks
+    Public Function GetTasks() As IEnumerable(Of Tasks) Implements ITasks.GetTasks
         Dim tasksList As New List(Of Tasks)
 
         Using connection As New SqlConnection(strConn)

@@ -23,13 +23,31 @@ Partial Public Class Register
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''txtRegisterName control.
+    '''txtRegisterFirstName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtRegisterName As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtRegisterFirstName As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''txtRegisterLastName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtRegisterLastName As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''txtRegisterUsername control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtRegisterUsername As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''txtRegisterPassword control.

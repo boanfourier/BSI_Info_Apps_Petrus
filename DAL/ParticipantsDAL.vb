@@ -1,7 +1,7 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
 Imports BSI_Info_Apps
-Imports [Interface]
+
 Public Class SqlParticipantRepository
     Implements IParticipants
     Private Const strConn As String = "Server=.\SQLEXPRESS02;Database=BSI_info;Trusted_Connection=True;"
@@ -18,7 +18,9 @@ Public Class SqlParticipantRepository
                 command.CommandType = CommandType.StoredProcedure
 
                 ' Add parameters
-                command.Parameters.AddWithValue("@name", participant.name)
+                command.Parameters.AddWithValue("@FirstName", participant.FirstName)
+                command.Parameters.AddWithValue("@LastName", participant.LastName)
+                command.Parameters.AddWithValue("@username", participant.username)
                 command.Parameters.AddWithValue("@email", participant.email)
                 command.Parameters.AddWithValue("@phone", participant.phone)
                 command.Parameters.AddWithValue("@password", participant.password)
@@ -45,7 +47,9 @@ Public Class SqlParticipantRepository
                         While reader.Read()
                             Dim participant As New Participants()
                             participant.participant_id = Convert.ToInt32(reader("participant_id"))
-                            participant.name = Convert.ToString(reader("name"))
+                            participant.FirstName = Convert.ToString(reader("FirstName"))
+                            participant.LastName = Convert.ToString(reader("LastName"))
+                            participant.username = Convert.ToString(reader("username"))
                             participant.email = Convert.ToString(reader("email"))
                             participant.phone = Convert.ToString(reader("phone"))
                             participant.password = Convert.ToString(reader("password"))

@@ -23,13 +23,13 @@ Partial Public Class Login
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''txtname control.
+    '''txtUsername control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtname As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtUsername As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''txtPassword control.

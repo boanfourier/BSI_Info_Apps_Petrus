@@ -13,10 +13,10 @@ Public Class Login
     End Sub
 
     Protected Sub btnLogin_Click(ByVal sender As Object, ByVal e As EventArgs)
-        Dim name As String = txtname.Text
+        Dim username As String = txtusername.Text
         Dim password As String = txtPassword.Text
 
-        If (ValidateUser(name, password)) Then
+        If (ValidateUser(username, password)) Then
             ' Set the session variable to indicate that the user is logged in
             Session("LoggedIn") = True
 
@@ -24,7 +24,7 @@ Public Class Login
             Script += "window.location.href = 'default.aspx';"
             ClientScript.RegisterStartupScript(Me.GetType(), "SuccessScript", Script, True)
         Else
-            Response.Write("<script>alert('Login gagal. Cek kembali name dan password Anda.');</script>")
+            Response.Write("<script>alert('Login gagal. Cek kembali username dan password Anda.');</script>")
         End If
     End Sub
 
@@ -40,14 +40,14 @@ Public Class Login
         End If
     End Sub
 
-    Protected Function ValidateUser(name As String, password As String) As Boolean
+    Protected Function ValidateUser(username As String, password As String) As Boolean
         Dim connectionString = "Data Source=BSINB23L014\SQLEXPRESS02;Initial Catalog=BSI_info;Integrated Security=True"
 
         Using connection As New SqlConnection(connectionString)
-            Dim Query As String = "SELECT COUNT(*) FROM Participants WHERE name = @name AND password = @password"
+            Dim Query As String = "SELECT COUNT(*) FROM Participants WHERE username = @username AND password = @password"
 
             Using cmd As New SqlCommand(Query, connection)
-                cmd.Parameters.AddWithValue("@name", name)
+                cmd.Parameters.AddWithValue("@username", username)
                 cmd.Parameters.AddWithValue("@password", password)
 
                 connection.Open()

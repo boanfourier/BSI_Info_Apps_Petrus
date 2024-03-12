@@ -1,41 +1,67 @@
-﻿<%@ Page Title="Home Page" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.vb" Inherits="BSI_info_Webform._Default" %>
+﻿<%@ Page Title="BSI INFO Home Page" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.vb" Inherits="BSI_info_Webform._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            animation: fadeInUp 0.5s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
     <main>
         <section class="row" aria-labelledby="aspnetTitle">
-            <h1 id="aspnetTitle">ASP.NET</h1>
-            <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-            <p><a href="http://www.asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
+            <h1 id="aspnetTitle">BSI INFO</h1>
+            <p class="lead">BSI INFO is your gateway to the latest information, resources, and events related to BSI.</p>
         </section>
 
         <div class="row">
-            <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-                <h2 id="gettingStartedTitle">Getting started</h2>
+            <section class="col-md-4 card" aria-labelledby="gettingStartedTitle">
+                <h2 id="gettingStartedTitle">Location</h2>
                 <p>
-                    ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-                A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
+                    Stay updated with the latest news and announcements from BSI.
                 </p>
                 <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-                </p>
-            </section>
-            <section class="col-md-4" aria-labelledby="librariesTitle">
-                <h2 id="librariesTitle">Get more libraries</h2>
-                <p>
-                    NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
+                    <a class="btn btn-default" href="locations.aspx">View All Location &raquo;</a>
                 </p>
             </section>
-            <section class="col-md-4" aria-labelledby="hostingTitle">
-                <h2 id="hostingTitle">Web Hosting</h2>
+            <section class="col-md-4 card" aria-labelledby="librariesTitle">
+                <h2 id="librariesTitle">Events</h2>
                 <p>
-                    You can easily find a web hosting company that offers the right mix of features and price for your applications.
+                    Explore upcoming events, workshops, and seminars organized by BSI.
                 </p>
                 <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
+                    <a class="btn btn-default" href="events.aspx">View All Events &raquo;</a>
+                </p>
+            </section>
+            <section class="col-md-4 card" aria-labelledby="hostingTitle">
+                <h2 id="hostingTitle">Task</h2>
+                <p>
+                    Access a variety of resources including publications, research papers, and educational materials.
+                </p>
+                <p>
+                    <a class="btn btn-default" href="tasks.aspx">View All Task &raquo;</a>
                 </p>
             </section>
         </div>

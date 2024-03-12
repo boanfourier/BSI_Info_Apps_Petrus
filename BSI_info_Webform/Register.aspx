@@ -71,7 +71,11 @@
     <form id="form1" runat="server">
         <div>
             <h2>Register Page</h2>
-            <asp:TextBox ID="txtRegisterName" runat="server" placeholder="Username" Required="true"></asp:TextBox>
+            <asp:TextBox ID="txtRegisterFirstName" runat="server" placeholder="FirstName" Required="true"></asp:TextBox>
+            <br />
+            <asp:TextBox ID="txtRegisterLastName" runat="server" placeholder="LastName" Required="true"></asp:TextBox>
+            <br />
+            <asp:TextBox ID="txtRegisterUsername" runat="server" placeholder="Username" Required="true"></asp:TextBox>
             <br />
             <asp:TextBox ID="txtRegisterPassword" runat="server" TextMode="Password" placeholder="Password" Required="true"></asp:TextBox>
             <br />

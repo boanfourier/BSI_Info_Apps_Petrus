@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports BSI_Info_Apps
-Imports [Interface]
+
 
 Public Class NotesDAL
     Implements INotes
@@ -62,4 +62,33 @@ Public Class NotesDAL
 
         Return noteItem
     End Function
+    Public Function GetAllNotes() As IEnumerable(Of Notes) Implements INotes.GetAllNotes
+        Dim notesList As New List(Of Notes)()
+        Dim query As String = "SELECT * FROM Notes"
+
+        Using connection As New SqlConnection(strConn)
+            Using command As New SqlCommand(query, connection)
+                Try
+                    connection.Open()
+                    Using reader As SqlDataReader = command.ExecuteReader()
+                        While reader.Read()
+                            Dim noteItem As New Notes()
+                            noteItem.note_id = Convert.ToInt32(reader("note_id"))
+                            noteItem.event_id = If(reader("event_id") IsNot DBNull.Value, CType(reader("event_id"), Integer?), Nothing)
+                            noteItem.note_text = Convert.ToString(reader("note_text"))
+                            noteItem.created_at = If(reader("created_at") IsNot DBNull.Value, CType(reader("created_at"), DateTime?), Nothing)
+
+                            notesList.Add(noteItem)
+                        End While
+                    End Using
+                Catch ex As Exception
+                    ' Handle exception (e.g., log or rethrow)
+                    Throw
+                End Try
+            End Using
+        End Using
+
+        Return notesList
+    End Function
+
 End Class

@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BSI_Info_Apps\BSI_Info_BO.vbproj" />
-    <ProjectReference Include="..\Interface\Interface.vbproj" />
   </ItemGroup>
 
 </Project>

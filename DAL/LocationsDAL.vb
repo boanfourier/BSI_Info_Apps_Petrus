@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports BSI_Info_Apps
-Imports [Interface]
+
 Public Class LocationsDAL
     Implements ILocations
     Private Const strConn As String = "Server=.\SQLEXPRESS02;Database=BSI_info;Trusted_Connection=True;"
@@ -62,5 +62,33 @@ Public Class LocationsDAL
         End Using
 
         Return locationItem
+    End Function
+    Public Function GetAllLocations() As IEnumerable(Of Locations) Implements ILocations.GetAllLocations
+        Dim locations As New List(Of Locations)()
+        Dim query As String = "SELECT * FROM Locations"
+
+        Using connection As New SqlConnection(strConn)
+            Using command As New SqlCommand(query, connection)
+                Try
+                    connection.Open()
+                    Using reader As SqlDataReader = command.ExecuteReader()
+                        While reader.Read()
+                            Dim locationItem As New Locations()
+                            locationItem.location_id = Convert.ToInt32(reader("location_id"))
+                            locationItem.name = Convert.ToString(reader("name"))
+                            locationItem.address = Convert.ToString(reader("address"))
+                            locationItem.capacity = If(reader("capacity") IsNot DBNull.Value, CType(reader("capacity"), Integer?), Nothing)
+                            locationItem.description = Convert.ToString(reader("description"))
+                            locations.Add(locationItem)
+                        End While
+                    End Using
+                Catch ex As Exception
+                    ' Handle exception (e.g., log or rethrow)
+                    Throw
+                End Try
+            End Using
+        End Using
+
+        Return locations
     End Function
 End Class

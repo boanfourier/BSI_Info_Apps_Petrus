@@ -1,6 +1,6 @@
 Imports System.Data.SqlClient
 Imports BSI_Info_Apps
-Imports [Interface]
+
 
 Public Class OrganizerDal
     Implements IOrganizers
