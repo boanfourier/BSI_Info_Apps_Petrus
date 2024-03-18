@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-public class TasksDTO
+namespace BSI_Info_BLL.DTO
 {
-    public int task_id { get; set; }
-    public int? event_id { get; set; }
-    public string description { get; set; }
-    public DateTime? deadline { get; set; }
-    public string status { get; set; }
+    public class TasksDTO
+    {
+        public int task_id { get; set; }
+        public int? event_id { get; set; }
+        public string description { get; set; }
+        public DateTime? deadline { get; set; }
+        public string status { get; set; }
+    }
 }

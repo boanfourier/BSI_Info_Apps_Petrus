@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BSI_Info_Apps;
+using BSI_Info_BLL.DTO;
 using DAL;
 using static Dapper.SqlMapper;
 

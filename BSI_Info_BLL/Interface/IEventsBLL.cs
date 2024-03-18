@@ -1,7 +1,8 @@
-﻿using System;
+﻿using BSI_Info_BLL.DTO;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using BSI_Info_Apps;
+
 
 
 public interface IEventsBLL

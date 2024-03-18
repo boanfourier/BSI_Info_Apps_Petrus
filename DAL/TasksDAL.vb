@@ -54,5 +54,61 @@ Public Class TasksDal
             End Using
         End Using
     End Sub
+    Public Sub UpdateTask(task As Tasks) Implements ITasks.UpdateTask
+        Using connection As New SqlConnection(strConn)
+            connection.Open()
+
+            Dim query As String = "UPDATE Tasks SET event_id = @event_id, description = @description, deadline = @deadline, status = @status WHERE task_id = @task_id"
+            Using command As New SqlCommand(query, connection)
+                command.Parameters.AddWithValue("@event_id", task.event_id)
+                command.Parameters.AddWithValue("@description", task.description)
+                command.Parameters.AddWithValue("@deadline", task.deadline)
+                command.Parameters.AddWithValue("@status", task.status)
+                command.Parameters.AddWithValue("@task_id", task.task_id)
+
+                command.ExecuteNonQuery()
+            End Using
+        End Using
+    End Sub
+
+    Public Sub DeleteTask(taskId As Integer) Implements ITasks.DeleteTask
+        Using connection As New SqlConnection(strConn)
+            connection.Open()
+
+            Dim query As String = "DELETE FROM Tasks WHERE task_id = @task_id"
+            Using command As New SqlCommand(query, connection)
+                command.Parameters.AddWithValue("@task_id", taskId)
+
+                command.ExecuteNonQuery()
+            End Using
+        End Using
+    End Sub
+    Public Function GetTaskById(taskId As Integer) As Tasks Implements ITasks.GetTaskById
+        Dim task As New Tasks()
+
+        Using connection As New SqlConnection(strConn)
+            connection.Open()
+
+            Dim query As String = "SELECT task_id, event_id, description, deadline, status FROM Tasks WHERE task_id = @task_id"
+            Using command As New SqlCommand(query, connection)
+                command.Parameters.AddWithValue("@task_id", taskId)
+                Using reader As SqlDataReader = command.ExecuteReader()
+                    If reader.Read() Then
+                        task.task_id = Convert.ToInt32(reader("task_id"))
+                        task.event_id = Convert.ToInt32(reader("event_id"))
+                        task.description = reader("description").ToString()
+                        task.deadline = Convert.ToDateTime(reader("deadline"))
+                        task.status = reader("status").ToString()
+                    Else
+                        ' Handle the case where task with the given ID is not found
+                        Return Nothing
+                    End If
+                End Using
+            End Using
+        End Using
+
+        Return task
+    End Function
 End Class
+
 
