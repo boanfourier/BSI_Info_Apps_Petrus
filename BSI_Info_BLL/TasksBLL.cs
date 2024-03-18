@@ -1,4 +1,5 @@
 ﻿using BSI_Info_Apps;
+using BSI_Info_BLL.DTO;
 using DAL;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ public class TasksBLL : ITasksBLL
 
     void ITasksBLL.DeleteTask(int taskId)
     {
-        throw new NotImplementedException();
+        _tasksDAL.DeleteTask(taskId);
     }
 
     IEnumerable<TasksDTO> ITasksBLL.GetTasks()
@@ -78,11 +79,51 @@ public class TasksBLL : ITasksBLL
 
     TasksDTO ITasksBLL.GetTaskById(int taskId)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var tasks = _tasksDAL.GetTaskById(taskId);
+            var taskdto = new TasksDTO
+            {
+                task_id = tasks.task_id,
+                event_id = tasks.event_id,
+                description = tasks.description,
+                deadline = tasks.deadline,
+                status = tasks.status,
+
+            };
+
+            return taskdto;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error occurred: {ex.Message}");
+            throw;
+        }
     }
 
-    void ITasksBLL.UpdateTask(TasksDTO task)
+    void ITasksBLL.UpdateTask(UpdateTasksDTO updatetask)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var tasks = new Tasks
+            {
+                task_id = updatetask.task_id,
+                event_id = (int)updatetask.event_id,
+                description = updatetask.description,
+                deadline = (DateTime)updatetask.deadline,
+                status = updatetask.status,
+               
+            };
+
+            if (updatetask != null)
+            {
+                _tasksDAL.UpdateTask(tasks);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error occurred: {ex.Message}");
+            throw;
+        }
     }
 }

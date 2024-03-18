@@ -9,7 +9,9 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "DAL", "DAL\DAL.vbproj", "{6
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BSI_info_Webform", "BSI_info_Webform\BSI_info_Webform.vbproj", "{01E42B1E-A7A4-40D1-8F95-8CAC3D3E74DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSI_Info_BLL", "BSI_Info_BLL\BSI_Info_BLL.csproj", "{724F528F-5AFC-45B5-87C9-01EF309CE2BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BSI_Info_BLL", "BSI_Info_BLL\BSI_Info_BLL.csproj", "{724F528F-5AFC-45B5-87C9-01EF309CE2BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSI_Info_MVC", "BSI_Info_MVC\BSI_Info_MVC.csproj", "{144630D8-ABBF-4C33-9C51-FD4AEF25EC88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{724F528F-5AFC-45B5-87C9-01EF309CE2BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{724F528F-5AFC-45B5-87C9-01EF309CE2BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{724F528F-5AFC-45B5-87C9-01EF309CE2BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{144630D8-ABBF-4C33-9C51-FD4AEF25EC88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{144630D8-ABBF-4C33-9C51-FD4AEF25EC88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{144630D8-ABBF-4C33-9C51-FD4AEF25EC88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{144630D8-ABBF-4C33-9C51-FD4AEF25EC88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

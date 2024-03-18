@@ -1,0 +1,61 @@
+﻿@model IEnumerable<BSI_Info_BLL.DTO.EventsDTO>
+
+@{
+    ViewData["Title"] = "List Of Events";
+}
+<div class="row">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Events Page</h1>
+    </div>
+
+    <div class="col-lg-12">
+        <!-- Basic Card Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Events Page</h6>
+            </div>
+            <div class="card-body">
+                @Html.Raw(ViewData["message"])
+
+                <form asp-action="Index" method="get" class="form-inline">
+                    <p>
+                        <input type="text" id="search" class="form-control" name="search" value="@ViewData["search"]"
+                               placeholder="search events name" />
+                        &nbsp;
+                        <input type="submit" class="btn btn-primary btn-sm" value="Search" />
+                    </p>
+                </form>
+
+                <a asp-action="Create" class="btn btn-success btn-sm">Create New Events</a><br /><br />
+                <table class="table table-striped">
+                    <tr>
+                        <th>Events ID</th>
+                        <th>Events Name</th>
+                        <th>Description</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Location ID</th>
+                        <th>Organizer ID</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                    </tr>
+
+                    @foreach (var events in Model)
+                    {
+                        <tr>
+                            <td>@events.event_id</td>
+                            <td>@events.event_name</td>
+                            <td>@events.description</td>
+                            <td>@events.start_date</td>
+                            <td>@events.end_date</td>
+                            <td>@events.location_id</td>
+                            <td>@events.organizer_id</td>
+                            <td><a asp-action="Edit" asp-route-id="@events.event_id" class="btn btn-warning btn-sm">edit</a></td>
+                            <td><a asp-action="Delete" asp-route-id="@events.event_id" class="btn btn-danger btn-sm">delete</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
+namespace BSI_Info_BLL.DTO
+{
     public class LocationsDTO
     {
         public int location_id { get; set; }
@@ -10,4 +12,5 @@ using System.Text;
         public int? capacity { get; set; }
         public string description { get; set; }
     }
+}
 

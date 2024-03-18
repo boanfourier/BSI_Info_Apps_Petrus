@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "BSI INFO";
+}
+
+<style>
+    main {
+        background: linear-gradient(to right, #667eea, #764ba2);
+        padding: 40px 0;
+        color: #fff;
+        text-align: center;
+    }
+
+    .card {
+        border: none;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #fff;
+        color: #333;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+    h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    p {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+    }
+
+    section {
+        padding: 40px 0;
+    }
+
+    .btn {
+        background-color: #4e73df;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+        .btn:hover {
+            background-color: #375ac7;
+        }
+</style>
+
+<main>
+    <section>
+        <h1>BSI INFO</h1>
+        <p class="lead">Your gateway to the latest information, resources, and events related to BSI.</p>
+    </section>
+
+    <div class="row">
+        <section class="col-md-4 card">
+            <h2>Location</h2>
+            <p>Stay updated with the latest news and announcements from BSI.</p>
+            <a class="btn" asp-controller="Locations" asp-action="Index">View All Locations &raquo;</a>
+        </section>
+        <section class="col-md-4 card">
+            <h2>Events</h2>
+            <p>Explore upcoming events, workshops, and seminars organized by BSI.</p>
+            <a class="btn" asp-controller="Events" asp-action="Index">View All Events &raquo;</a>
+        </section>
+        <section class="col-md-4 card">
+            <h2>Task</h2>
+            <p>Access a variety of resources including publications, research papers, and educational materials.</p>
+            <a class="btn" asp-controller="Tasks" asp-action="Index">View All Tasks &raquo;</a>
+        </section>
+    </div>
+</main>

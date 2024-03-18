@@ -1,0 +1,60 @@
+﻿<div class="row">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Add Events</h1>
+    </div>
+
+    <div class="col-lg-12">
+        <!-- Basic Card Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Add Events</h6>
+            </div>
+            <div class="card-body">
+                @Html.Raw(ViewData["message"])
+                <form method="post" action="/Events/Create">
+                    <div class="form-group">
+                        <label for="event_id">Events ID :</label>
+                        <input type="text" class="form-control" name="event_id"
+                               placeholder="Insert Events ID" />
+                    </div>
+                    <div class="form-group">
+                        <label for="event_name">Events Name :</label>
+                        <input type="text" class="form-control" name="event_name"
+                               placeholder="Insert Events Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="description">description :</label>
+                        <input type="text" class="form-control" name="description"
+                               placeholder="Insert description" />
+                    </div>
+                    <div class="form-group">
+                        <label for="start_date">start_date :</label>
+                        <input type="text" class="form-control" name="start_date"
+                               placeholder="Insert start_date" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="end_date">end_date :</label>
+                        <input type="text" class="form-control" name="end_date"
+                               placeholder="Insert end_date" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location_id">location_id :</label>
+                        <input type="text" class="form-control" name="location_id"
+                               placeholder="Insert location_id" />
+                    </div>
+                    <div class="form-group">
+                        <label for="organizer_id">organizer_id :</label>
+                        <input type="text" class="form-control" name="organizer_id"
+                               placeholder="Insert organizer_id" />
+                    </div>
+
+                    <input type="Submit" value="Create" class="btn btn-success btn-sm" />
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>

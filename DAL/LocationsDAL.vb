@@ -91,4 +91,46 @@ Public Class LocationsDAL
 
         Return locations
     End Function
+    Public Function DeleteLocationById(locationId As Integer) As Boolean Implements ILocations.DeleteLocation
+        Dim query As String = "DELETE FROM Locations WHERE location_id = @location_id"
+
+        Using connection As New SqlConnection(strConn)
+            Using command As New SqlCommand(query, connection)
+                command.Parameters.AddWithValue("@location_id", locationId)
+
+                Try
+                    connection.Open()
+                    command.ExecuteNonQuery()
+                    Return True
+                Catch ex As Exception
+                    ' Handle exception (e.g., log or rethrow)
+                    Throw
+                End Try
+            End Using
+        End Using
+    End Function
+    Public Function UpdateLocation(location As Locations) As Boolean Implements ILocations.UpdateLocation
+        Dim query As String = "UPDATE Locations SET name = @name, address = @address, capacity = @capacity, description = @description WHERE location_id = @location_id"
+
+        Using connection As New SqlConnection(strConn)
+            Using command As New SqlCommand(query, connection)
+                command.Parameters.AddWithValue("@name", location.name)
+                command.Parameters.AddWithValue("@address", location.address)
+                command.Parameters.AddWithValue("@capacity", If(location.capacity.HasValue, CType(location.capacity, Object), DBNull.Value))
+                command.Parameters.AddWithValue("@description", location.description)
+                command.Parameters.AddWithValue("@location_id", location.location_id)
+
+                Try
+                    connection.Open()
+                    command.ExecuteNonQuery()
+                    Return True
+                Catch ex As Exception
+                    ' Handle exception (e.g., log or rethrow)
+                    Throw
+                End Try
+            End Using
+        End Using
+    End Function
 End Class
+
+

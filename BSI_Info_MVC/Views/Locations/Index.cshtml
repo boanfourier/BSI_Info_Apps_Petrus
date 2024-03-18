@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BSI_Info_BLL.DTO.LocationsDTO>
+
+@{
+    ViewData["Title"] = "List Of Locations";
+}
+<div class="row">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Events Page</h1>
+    </div>
+
+    <div class="col-lg-12">
+        <!-- Basic Card Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Locations Page</h6>
+            </div>
+            <div class="card-body">
+                @Html.Raw(ViewData["message"])
+
+                <form asp-action="Index" method="get" class="form-inline">
+                    <p>
+                        <input type="text" id="search" class="form-control" name="search" value="@ViewData["search"]"
+                               placeholder="search locations name" />
+                        &nbsp;
+                        <input type="submit" class="btn btn-primary btn-sm" value="Search" />
+                    </p>
+                </form>
+
+                <a asp-action="Create" class="btn btn-success btn-sm">Create New Locations</a><br /><br />
+                <table class="table table-striped">
+                    <tr>
+                        <th>Locations ID</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Capacity</th>
+                        <th>Description</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                  
+
+                    @foreach (var locations in Model)
+                    {
+                        <tr>
+                            <td>@locations.location_id</td>
+                            <td>@locations.name</td>
+                            <td>@locations.address</td>
+                            <td>@locations.capacity</td>
+                            <td>@locations.description</td>
+
+                            <td><a asp-action="Edit" asp-route-id="@locations.location_id" class="btn btn-warning btn-sm">edit</a></td>
+                            <td><a asp-action="Delete" asp-route-id="@locations.location_id" class="btn btn-danger btn-sm">delete</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

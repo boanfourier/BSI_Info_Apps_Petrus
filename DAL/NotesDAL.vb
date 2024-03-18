@@ -90,5 +90,46 @@ Public Class NotesDAL
 
         Return notesList
     End Function
+    Public Function UpdateNote(note As Notes) As Boolean Implements INotes.UpdateNote
+        Dim query As String = "UPDATE Notes SET event_id = @event_id, note_text = @note_text, created_at = @created_at WHERE note_id = @note_id"
+
+        Using connection As New SqlConnection(strConn)
+            Using command As New SqlCommand(query, connection)
+                command.Parameters.AddWithValue("@event_id", If(note.event_id.HasValue, CType(note.event_id, Object), DBNull.Value))
+                command.Parameters.AddWithValue("@note_text", note.note_text)
+                command.Parameters.AddWithValue("@created_at", If(note.created_at.HasValue, CType(note.created_at, Object), DBNull.Value))
+                command.Parameters.AddWithValue("@note_id", note.note_id)
+
+                Try
+                    connection.Open()
+                    Dim rowsAffected As Integer = command.ExecuteNonQuery()
+                    Return rowsAffected > 0
+                Catch ex As Exception
+                    ' Handle exception (e.g., log or rethrow)
+                    Throw
+                End Try
+            End Using
+        End Using
+    End Function
+
+    Public Function DeleteNoteById(noteId As Integer) As Boolean Implements INotes.DeleteNoteById
+        Dim query As String = "DELETE FROM Notes WHERE note_id = @note_id"
+
+        Using connection As New SqlConnection(strConn)
+            Using command As New SqlCommand(query, connection)
+                command.Parameters.AddWithValue("@note_id", noteId)
+
+                Try
+                    connection.Open()
+                    Dim rowsAffected As Integer = command.ExecuteNonQuery()
+                    Return rowsAffected > 0
+                Catch ex As Exception
+                    ' Handle exception (e.g., log or rethrow)
+                    Throw
+                End Try
+            End Using
+        End Using
+    End Function
+
 
 End Class

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
+namespace BSI_Info_BLL.DTO
+{
     public class EventsDTO
     {
         public int event_id { get; set; }
@@ -12,4 +14,5 @@ using System.Text;
         public int? location_id { get; set; }
         public int? organizer_id { get; set; }
     }
+}
 
