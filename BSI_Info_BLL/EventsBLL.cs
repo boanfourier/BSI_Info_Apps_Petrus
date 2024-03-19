@@ -30,7 +30,7 @@ public class EventsBLL : IEventsBLL
                     start_date = eventObj.start_date,
                     end_date = eventObj.end_date,
                     location_id = eventObj.location_id,
-                    organizer_id = eventObj.organizer_id
+                    organizer_id = eventObj.organizer_id,
                 };
 
                 eventDTOs.Add(eventdto);

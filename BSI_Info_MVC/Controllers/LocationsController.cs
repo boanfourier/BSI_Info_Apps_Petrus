@@ -22,7 +22,7 @@ public class LocationsController : Controller
         }
         user = JsonSerializer.Deserialize<UserDTO>(HttpContext.Session.GetString("user"));
         //pengecekan session username
-        if (Auth.CheckRole("Organizer,Participant", user.Roles.ToList()) == false)
+        if (Auth.CheckRole("Organizer", user.Roles.ToList()) == false)
         {
             TempData["message"] = @"<div class='alert alert-danger'><strong>Error!</strong>Anda tidak memiliki hak akses !</div>";
             return RedirectToAction("Index", "Home");
@@ -47,7 +47,7 @@ public class LocationsController : Controller
         user = JsonSerializer.Deserialize<UserDTO>(HttpContext.Session.GetString("user"));
 
         //pengecekan session username
-        if (Auth.CheckRole("Organizer,Participant", user.Roles.ToList()) == false)
+        if (Auth.CheckRole("Organizer", user.Roles.ToList()) == false)
         {
             TempData["message"] = @"<div class='alert alert-danger'><strong>Error!</strong>Anda tidak memiliki hak akses !</div>";
             return RedirectToAction("Index", "Home");

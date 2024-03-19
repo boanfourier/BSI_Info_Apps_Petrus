@@ -149,7 +149,7 @@ public class TasksController : Controller
         if (Auth.CheckRole("Organizer", user.Roles.ToList()) == false)
         {
             TempData["message"] = @"<div class='alert alert-danger'><strong>Error!</strong>Anda tidak memiliki hak akses !</div>";
-            return RedirectToAction("Login", "Users");
+            return RedirectToAction("Index", "Home");
         }
 
         var model = _taskBLL.GetTaskById(id);
