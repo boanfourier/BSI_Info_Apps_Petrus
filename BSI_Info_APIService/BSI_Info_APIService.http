@@ -1,0 +1,6 @@
+@BSI_Info_APIService_HostAddress = http://localhost:5011
+
+GET {{BSI_Info_APIService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
